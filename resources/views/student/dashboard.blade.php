@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12 text-center">
-                    <h1 class="m-0">Welcome to the CAR DEALER System</h1>
+                    <h1 class="m-0 text-primary font-weight-bold">Welcome to the CAR DEALER System</h1>
                     <p>This is your personalized dashboard. Explore the features and manage your activities.</p>
                 </div><!-- /.col -->
 
