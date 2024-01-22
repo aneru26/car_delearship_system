@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif; /* Update to Montserrat font */
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: var(--bs-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.card {
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1rem;
+    --bs-card-title-spacer-y: 0.5rem;
+    --bs-card-title-color: inherit; /* Set to desired color */
+    --bs-card-subtitle-color: inherit; /* Set to desired color */
+    --bs-card-border-width: var(--bs-border-width);
+    --bs-card-border-color: var(--bs-border-color-translucent);
+    --bs-card-border-radius: var(--bs-border-radius);
+    --bs-card-box-shadow: ; /* Set to desired box shadow */
+    --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+    --bs-card-cap-padding-y: 0.5rem;
+    --bs-card-cap-padding-x: 1rem;
+    --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
+    --bs-card-cap-color: inherit; /* Set to desired color */
+    --bs-card-height: ; /* Set to desired height */
+    --bs-card-color: inherit; /* Set to desired color */
+    --bs-card-bg: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient background */
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--bs-card-height);
+    color: var(--bs-card-color);
+    word-wrap: break-word;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    box-shadow: var(--bs-card-box-shadow);
+}
+
+.main-header {
+    /* background: linear-gradient(to bottom right, #776de2, #776de2, #776de2); */
+    height: 120px;
+}
+
+
+
+  .small-box.bg-success {
+    background: linear-gradient(45deg, black, rgb(92, 227, 135), blue);
+  }
+
+.navbar-light .navbar-brand,
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-toggler-icon {
+    color: #0d6efdff !important;
+}
+
+.navbar-light .navbar-brand {
+    font-size: 24px;
+
+}
+
+.navbar-light .navbar-nav .nav-link {
+    font-size: 18px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-weight: bold;
+}
+
+.navbar-nav .nav-item a p:hover {
+    color: #4569f7; /* Change this to your desired hover background color */
+    transition: background-color 0.3s ease-in-out; /* Adjust the transition duration as needed */
+  }
+
+  .navbar-nav .nav-link a p:hover {
+    color: #c281fa; /* Change this to your desired hover text color */
+  }
+
+
+
+  

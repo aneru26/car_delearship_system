@@ -1,0 +1,35 @@
+.heading-section {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 36px;
+  color: #ffffff; /* Change this to black (#000) */
+  letter-spacing: 2px;
+}
+
+/* You might want to update other styles using Bebas Neue as well */
+body {
+  margin: 0;
+  overflow: auto;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.content-container {
+  position: relative;
+  z-index: 1;
+}
+hr {
+  color: #ffffff;
+}
+.ftco-section {
+  background-color: #000000;
+}
+
+
+.login-wrap {
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.8);
+  padding: 20px; /* Add padding for better visibility of the shadow */
+}
