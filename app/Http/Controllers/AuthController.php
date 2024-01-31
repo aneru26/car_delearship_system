@@ -101,7 +101,6 @@ class AuthController extends Controller
     'last_name' => 'required|string|max:255',
     'email' => 'required|string|email|max:255|unique:users',
     'password' => 'required|string|min:4|confirmed',
-    'user_type' => 'required|in:2,3,4',
     
 ]);
 
@@ -115,7 +114,7 @@ class AuthController extends Controller
         $user->password = Hash::make($validatedData['password']);
         $user->remember_token = Str::random(40);
         // Assign the selected user_type to the user
-        $user->user_type = $validatedData['user_type'];
+        $user->user_type = 2;
       
     
         $user->save();

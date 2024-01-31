@@ -13,7 +13,7 @@
           </div>
 
           <div class="col-sm-6" style="text-align:right;">
-            <a href="{{ url('dealer/cars/add')}}" class="btn btn-primary">Add New Cars</a>
+            <a href="{{ url('dealer/cars/add')}}" class="btn btn-primary">Deal Cars</a>
           </div>
           
         </div>
@@ -48,6 +48,7 @@
                       <th>Engine</th>
                       <th>Transmission</th>
                       <th>Price</th>
+                      <th>Status</th>
                       <th>Created By</th>
                       <th >Created Date</th>
                       <th >Action</th>
@@ -69,6 +70,7 @@
                         <td>{{  $value->engine }}</td>
                         <td>{{  $value->transmission }}</td>
                         <td>{{  $value->price }}</td>
+                        <td>{{  $value->status }}</td>
                         <td>{{ $value->created_by_name }} {{ $value->created_by_last_name }}</td>
                           <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
                         <td style="min-width: 140px;">

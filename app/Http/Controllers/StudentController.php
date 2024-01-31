@@ -22,7 +22,7 @@ class StudentController extends Controller
 
     public function add()
     {
-        $data['getClass'] = classModel::getClass(); 
+        
         $data['header_title'] = "Add Faculty ";
         return view(request()->is('admin/*') ? 'admin.student.add' : 'teacher.student.add', $data);
     }
@@ -89,7 +89,7 @@ class StudentController extends Controller
         $data['getRecord'] = User::getSingle($id);
         if(!empty($data['getRecord']))
         {
-            $data['getClass'] = classModel::getClass();
+        
             $data['header_title'] = "Edit Student ";
             return view(request()->is('admin/*') ? 'admin.student.edit' : 'teacher.student.edit', $data);
         }

@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-center">
-            <h1 class="text-primary font-weight-bold">Add New Car</h1>
+            <h1 class="text-primary font-weight-bold">Deal A Car</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -17,101 +17,52 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+
         <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-           
-            <div class="card card-primary">
-              
-             
-              <form method="post" action="" enctype="multipart/form-data">
-              {{ csrf_field() }}
-              <div class="row">
-                <div class="col-md-4 col-sm-12 mb-3 text-center">
-                    <label class="form-label">Car VIN</label>
-                    <input type="text" class="form-control" value="{{ old('vin') }}" name="vin" placeholder="Car VIN">
-                    <div style="color:red">{{ $errors->first('vin') }}</div>
-                </div>
 
-            
-                <div class="col-md-4 col-sm-12 mb-3 text-center">
-                  <label class="form-label">Brands</label>
-                  <input type="text" class="form-control" value="{{ old('brands') }}" name="brands" placeholder="Brands">
-                  <div style="color:red">{{ $errors->first('brands') }}</div>
-              </div>
-            
-              <div class="col-md-4 col-sm-12 mb-3 text-center">
-                <label class="form-label">Models</label>
-                <input type="text" class="form-control" value="{{ old('models') }}" name="models" placeholder="Models">
-                <div style="color:red">{{ $errors->first('models') }}</div>
-            </div>
-            
-                <div class="col-md-3 col-sm-12 mb-3 text-center">
-                    <label class="form-label">Color of car</label>
-                    <select class="form-control" name="color" id="color"
-                        value="{{ old('color') }}">
-                        <option value="black">Black</option>
-                        <option value="white">White</option>
-                        <option value="red">Red</option>
-                        <option value="blue">Blue</option>
-                        <option value="green">Green</option>
-                        <option value="yellow">Yellow</option>
-                        <option value="orange">Orange</option>
-                        <option value="purple">Purple</option>
-                        <option value="ashen">Ashen</option>
-                        <option value="silver">Silver</option>
-                    </select>
-                    <div style="color:red">{{ $errors->first('color') }}</div>
-                </div>
-            
-                <div class="col-md-3 col-sm-12 mb-3 text-center">
-                  <label class="form-label">Engine</label>
-                  <input type="text" class="form-control" value="{{ old('engine') }}" name="engine" placeholder="Engine">
-                  <div style="color:red">{{ $errors->first('engine') }}</div>
-              </div>
-            
-              <div class="col-md-3 col-sm-12 mb-3 text-center">
-                <label class="form-label">Transmission</label>
-                <input type="text" class="form-control" value="{{ old('transmission') }}" name="transmission" placeholder="Transmission">
-                <div style="color:red">{{ $errors->first('transmission') }}</div>
-            </div>
+          
+          @if(count($getRecord) > 0)
+              @foreach ($getRecord as $car)
+                  <div class="col-md-6 col-xl-6">
+                      <div class="card  shadow-lg mb-5  rounded">
+                          @if(!empty($car->getPhotoDirect()))
+                              <img src="{{ $car->getPhotoDirect() }}" style="height: 150px; width:200px; border-radius: 20px;" class="mx-auto">
+                          @endif
+                          <div class="card-body">
+                              <h5 class="card-title "><span class="text-danger">VIN:</span>{{ $car->vin}}</h5>
+                              <p class="card-text"><span class="text-danger">Brands:</span>{{ $car->brands }}</p> <p class="card-text"><span class="text-danger">Models:</span>{{ $car->models }}</p> <p class="card-text"><span class="text-danger">Price:</span>{{ number_format($car->price, 2, '.', ',') }}</p>
+                              
+                              <p class="card-text text-capitalize">{{ $car->color }} <span class="text-primary font-weight-bold">|</span> {{ $car->engine }} <span class="text-primary font-weight-bold">|</span>
+                                  {{ $car->transmission }}</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <p class="card-text">
+                                      <small class="text-muted"><span class="text-danger">Created By:</span>{{ $car->created_by_name}} {{ $car->created_by_last_name}}</small>
+                                  </p>
+                                  <p class="card-text">
+                                      <small class="text-muted">Last updated {{ $car->updated_at->diffforhumans() }}</small>
+                                  </p>
+                              </div>
+                              <a href="{{ url('dealer/cars/deal/'.$car->id) }}" class="btn rounded-pill btn-icon btn-primary ">
+                                <span class="nav-icon ion-pricetag"></span>
 
-            <div class="col-md-3 col-sm-12 mb-3 text-center">
-              <label class="form-label">Price</label>
-              <input type="number" class="form-control" value="{{ old('price') }}" name="price" placeholder="Price">
-              <div style="color:red">{{ $errors->first('price') }}</div>
+                                  
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
+          @else
+              <div class="col-12 text-center">
+                  <p>No records found.</p>
+              </div>
+          @endif
+
+          <div style="padding: 10px; display: flex; justify-content: flex-end;">
+              {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
           </div>
-
-                
-            
-            <div class="col-md-12 col-sm-12 mb-3 d-flex justify-content-center align-items-center gap-4">
-              <div class="col-5">
-                  <img src="{{ asset('dist/img/car.png') }}" alt="user-avatar" class="d-block rounded img-fluid" id="uploadedAvatar" />
-              </div>
-              <div class="button-wrapper text-center">
-                  <label for="photo">Photo</label>
-                  <input type="file" class="form-control" name="photo" id="photo" onchange="previewImage(this)">
-                  <p class="text-muted mb-0">Allowed JPG, GIF, or PNG. Max size of 800K</p>
-                  <div style="color:red">{{ $errors->first('photo') }}</div>
-                  <button type="button" class="btn btn-outline-secondary mt-2" onclick="resetImage()">Reset Image</button>
-              </div>
-          </div>
-
-    
-            
-            </div>
-            
-                
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-              </form>
-              
-             </div>
-         
-          </div>
+          
+          
+      </div>
           
         </div>
         

@@ -34,16 +34,16 @@
                             <p>Total Cars</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="fas fa-car"></i>
                         </div>
                         <a href="{{ url('student/cars/list') }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-6">
+                {{-- <div class="col-lg-6 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-success">
+                    <div class="small-box bg-primary">
                         <div class="inner">
                             <h3>{{ $TotalParts }}</h3>
 
@@ -55,27 +55,27 @@
                         <a href="{{ url('student/parts/list') }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="col-lg-6 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-success">
+                    <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>{{ $TotalPurchase }}</h3>
 
                             <p>Total Purchase Car</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="fas fa-car"></i>
                         </div>
                         <a href="{{ url('student/purchase/list') }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-6">
+                {{-- <div class="col-lg-6 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-success">
+                    <div class="small-box bg-warning">
                         <div class="inner">
                             <h3>{{ $TotalPurchaseParts }}</h3>
 
@@ -87,7 +87,7 @@
                         <a href="{{ url('student/purchase_parts/list') }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                </div>
+                </div> --}}
               
             </div>
             <!-- /.row -->

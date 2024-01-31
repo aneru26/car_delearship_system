@@ -13,6 +13,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\DealerController;
 use App\Http\Controllers\HomeworkController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PartsController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchasePartsController;
@@ -129,7 +130,12 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('admin/purchase/decline/{id}',[PurchaseController::class, 'admindecline'] );
     Route::get('admin/purchase/delete/{id}',[PurchaseController::class, 'admindelete'] );
 
-    
+   //Inventory
+        Route::get('admin/inventory/list',[InventoryController::class, 'list'] );
+        Route::get('admin/inventorysales/sales',[PurchaseController::class, 'saleslist'] );
+        Route::get('admin/inventory/accept/{id}',[InventoryController::class, 'adminaccept'] );
+        Route::get('admin/inventory/decline/{id}',[InventoryController::class, 'admindecline'] );
+        Route::get('admin/inventory/delete/{id}',[InventoryController::class, 'admindelete'] );
 
 
 });
@@ -187,7 +193,8 @@ Route::group(['middleware' => 'teacher'], function (){
     //Cars
     Route::get('dealer/cars/list',[CarController::class, 'list'] );
     Route::get('dealer/cars/add',[CarController::class, 'add'] );
-    Route::post('dealer/cars/add',[CarController::class, 'insert'] );
+    Route::get('dealer/cars/deal/{id}',[CarController::class,'dealerdeal'] );
+    Route::post('dealer/cars/deal/{id}',[CarController::class, 'insert'] );
     Route::get('dealer/cars/edit/{id}',[CarController::class, 'edit'] );
     Route::post('dealer/cars/edit/{id}',[CarController::class, 'update'] );
     Route::get('dealer/cars/delete/{id}',[CarController::class, 'delete'] );

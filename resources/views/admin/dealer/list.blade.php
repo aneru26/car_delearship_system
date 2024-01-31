@@ -12,6 +12,9 @@
             <h1>Dealer List (Total : {{ $getRecord->total() }}) </h1>
           </div>
 
+          <div class="col-sm-6" style="text-align:right;">
+            <a href="{{ url('admin/dealer/add')}}" class="btn btn-outline-primary ">Add New Dealer</a>
+          </div>
     
         </div>
       </div><!-- /.container-fluid -->
@@ -68,7 +71,8 @@
       Actions
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="{{ url('admin/student/delete/'.$value->id) }}">Delete</a>
+      <a class="dropdown-item" href="{{ url('admin/dealer/edit/'.$value->id) }}">Edit</a>
+      <a class="dropdown-item" href="{{ url('admin/dealer/delete/'.$value->id) }}">Delete</a>
     </div>
   </div>
 </td>

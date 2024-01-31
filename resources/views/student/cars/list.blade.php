@@ -16,28 +16,31 @@
                     <div style="padding: 10px; float:right;">
 
                         <form action="{{ url('student/cars/list') }}" method="GET" class="form-inline">
-                            <!-- Search Bar -->
-                            <div class="input-group">
-                                <input type="text" name="search" class="form-control" placeholder="Search">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-outline-primary">Search</button>
+                            <div class="row">
+                                <!-- Search Bar -->
+                                <div class="col-sm-6 mb-2">
+                                    <div class="input-group">
+                                        <input type="text" name="search" class="form-control" placeholder="Search">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-outline-primary">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <!-- Price Range Filtering -->
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <label for="min_price" class="input-group-prepend mr-2">Price Range:</label>
+                                        <input type="text" name="min_price" id="min_price" class="form-control mr-2" placeholder="Min Price">
+                                        <input type="text" name="max_price" id="max_price" class="form-control mr-2" placeholder="Max Price">
+                                        <button type="submit" class="btn btn-outline-primary">Apply</button>
+                                    </div>
                                 </div>
                             </div>
-
-                            <!-- Sorting Dropdown -->
-                            <label for="sort" class="ml-2 mr-2">Sort by:</label>
-                            <select name="sort" id="sort" class="form-control" onchange="this.form.submit()">
-                                <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Newest Offers</option>
-                                <option value="low_to_high" {{ request('sort') == 'low_to_high' ? 'selected' : '' }}>Starting Price: Low to High</option>
-                                <option value="high_to_low" {{ request('sort') == 'high_to_low' ? 'selected' : '' }}>Starting Price: High to Low</option>
-                                <optgroup label="Price Range">
-                                    <option value="1-2" {{ request('sort') == '1-2' ? 'selected' : '' }}>1,00,000 - 2,000,000</option>
-                                    <option value="2-3" {{ request('sort') == '2-3' ? 'selected' : '' }}>2,000,000 - 3,000,000</option>
-                                    <option value="3-4" {{ request('sort') == '3-4' ? 'selected' : '' }}>3,000,000 - 4,000,000</option>
-                                    <option value="4-5" {{ request('sort') == '4-5' ? 'selected' : '' }}>4,000,000 - 5,000,000</option>
-                                </optgroup>
-                            </select>
                         </form>
+                        
+                        
+                        
                     </div>
                 </div>
                 

@@ -41,21 +41,15 @@
     }
   </style>
 </head>
-<body class="img js-fullheight" style="background-color: #000000;">
-  <div id="particles-js"></div>
+<body class="img js-fullheight" >
+
   <section class="ftco-section">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6 text-center mb-5">
-            <!-- Replace the text with your logo image -->
-            <img src="{{ asset('frontend/images/car_dealership.png') }}" alt="Logo" class="logo-image" style=" width: 250px; 
-            height: auto;">
-        </div>
-    </div>
+     
 			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-4">
+				<div class="col-md-6 col-lg-4 border border-dark shadow-lg p-3 mb-5 bg-white rounded">
 					<div class="login-wrap p-0">
-		      	<h3 class="mb-4 text-center">Register your Account</h3>
+		      	<h3 class="mb-4 text-center text-dark" style="font-weight: bold">Register your Account</h3>
 
 
             @if ($errors->any())
@@ -72,35 +66,26 @@
               @include(' _message')
 					{{ csrf_field() }}
 
-					<div class="form-group">
-						<label for="user_type">Register As?:</label>
-					  <select name="user_type" id="user_type">
-						  <option value="2">Customer </option>
-						  <option value="3">Dealer</option>
-						  <option value="4">Supplier</option>
-					  </select>
-						</div>
-
             <div class="form-group">
-              <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}"  placeholder="First Name" required>
+              <input type="text" class="form-control bg-dark" name="name" id="name" value="{{ old('name') }}"  placeholder="First Name" required>
             </div>
 
 			<div class="form-group">
-				<input type="text" class="form-control" name="last_name" id="last_name" value="{{ old('last_name') }}"  placeholder="Last Name" required>
+				<input type="text" class="form-control bg-dark" name="last_name" id="last_name" value="{{ old('last_name') }}"  placeholder="Last Name" required>
 			  </div>
 
 		      		<div class="form-group">
-		      			<input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required>
+		      			<input type="email" class="form-control bg-dark" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required>
 		      		</div>
 
 					
 	            <div class="form-group">
-	              <input id="password-field" type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+	              <input id="password-field" type="password" class="form-control bg-dark" name="password" id="password" placeholder="Password" required>
 	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 	            </div>
 
               <div class="form-group">
-	              <input id="password-field" type="password" class="form-control" name="password_confirmation" id="password" placeholder="Retype Password" required>
+	              <input id="password-field" type="password" class="form-control bg-dark" name="password_confirmation" id="password" placeholder="Retype Password" required>
 	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 	            </div>
 
@@ -111,7 +96,7 @@
 	            <div class="form-group d-md-flex">
 	            	
                 <div class="w-100 text-md-center">
-                  <a href="{{ url('/')}}" style="display: inline-block; font-weight:bold; margin-top: 20px; padding: 10px 30px; background-color: rgb(255, 255, 255); color: #000000; border-radius: 20px; text-decoration: none;">Login</a>
+                  <a href="{{ url('/')}}" style="display: inline-block; font-weight:bold; margin-top: 20px; padding: 10px 30px; background-color: rgb(0, 0, 0); color: #ffffff; border-radius: 20px; text-decoration: none;">Login</a>
               </div>
               
                 

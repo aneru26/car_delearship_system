@@ -85,7 +85,7 @@
             
             <div class="col-md-12 col-sm-12 mb-3 d-flex justify-content-center align-items-center gap-4 ">
               <div class="col-5 ">
-                  <img src="{{ asset('dist/img/car.png') }}" alt="user-avatar" class="d-block rounded img-fluid" id="uploadedAvatar" />
+                  <img src="{{ asset('dist/img/car1.png') }}" alt="user-avatar" class="d-block rounded img-fluid" id="uploadedAvatar" />
               </div>
               <div class="button-wrapper text-center">
                   <label for="photo">Photo</label>
@@ -177,7 +177,7 @@
       var fileInput = document.getElementById('photo');
 
       // Reset the image to the default one
-      imgElement.src = '{{ asset('dist/img/car.png') }}';
+      imgElement.src = '{{ asset('dist/img/car1.png') }}';
 
       // Reset the file input
       fileInput.value = '';

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Deal_car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -12,50 +13,48 @@ class CarController extends Controller
 {
     public function list()
     {
-        $data['getRecord']= Car::getRecord();
+        // Assuming you have access to the authenticated user's ID
+        $userId = auth()->user()->id;
+        
+        $data['getRecord'] = Deal_car::getRecord($userId); // Pass the user ID
         $data['header_title'] = "Cars";
         return view('dealer.cars.list', $data);
     }
 
     public function add()
     {
-       
+        $data['getRecord']= Car::getRecord();
         $data['header_title'] = "Add Cars ";
         return view('dealer.cars.add', $data);
     }
 
-    public function insert(Request $request)
+    public function dealerdeal($id)
     {
-
-        $car = new Car;
-        $car->vin = trim($request->vin);
-        $car->brands = trim($request->brands);
-        $car->models = trim($request->models);
-        $car->color = trim($request->color);
-        $car->engine = trim($request->engine);
-        $car->transmission = trim($request->transmission);
-        $car->price = trim($request->price);
-        $car->created_by = Auth::user()->id;
-
-        if ($request->hasFile('photo') && $request->file('photo')->isValid()) 
-        {
-            $file = $request->file('photo');
-            $ext = $file->getClientOriginalExtension();
-            $randomStr = Str::random(20);
-            $filename = strtolower($randomStr) . '.' . $ext;
-    
-            $uploadPath = public_path('upload/car');
-
-        // Store the file in the 'C:\xampp\htdocs\school.com\upload\profile' directory using the Storage facade.
-        $file->move($uploadPath, $filename);
-
-        $car->photo = $filename;
-        }
-
-        $car->save();
-
-        return redirect('dealer/cars/list')->with('succes',"Car Successfully Created");
+        $getRecord = Car::getSingle($id);
+        $data['getRecord'] = $getRecord;
+        $data['header_title'] = "Deal Car";
+        return view('dealer.cars.deal', $data);
     }
+
+
+    public function insert(Request $request, $carId)
+    
+    {
+// Validate the request data as needed
+
+    // Create a new purchase record
+    $purchase = new Deal_car();
+    $purchase->car_id = $carId;
+    $purchase->dealer_id = Auth::user()->id; // Assuming you have a customers table
+    $purchase->purchase_date = now();
+
+    // Save the purchase record
+    $purchase->save();
+
+    // You may also want to update the car status or perform other actions related to the purchase
+
+    return redirect('dealer/cars/list')->with('succes',"Car Successfully Deal");
+}
 
     public function edit($id)
     {
@@ -113,17 +112,19 @@ class CarController extends Controller
     {
         $data['header_title'] = "Cars";
         
-        // Get sorting option from the request
-        $sortOption = $request->input('sort', 'newest');
-        
         // Get search term from the request
         $searchTerm = $request->input('search');
     
-        // Fetch records based on sorting option and search term
-        $data['getRecord'] = Car::getRecordCustomer($sortOption, $searchTerm);
+        // Get min and max price from the request
+        $minPrice = $request->input('min_price');
+        $maxPrice = $request->input('max_price');
+    
+        // Fetch records based on price range and search term
+        $data['getRecord'] = Deal_car::getRecordCustomer($minPrice, $maxPrice, $searchTerm);
         
         return view('student.cars.list', $data);
     }
+    
     
 
     public function customerpurchase($id)
@@ -156,7 +157,7 @@ class CarController extends Controller
 
 public function adminlist()
 {
-    $data['getRecord']= Car::getRecord();
+    $data['getRecord']= Car::getRecordadmin();
     $data['header_title'] = "Cars";
     return view('admin.cars.list', $data);
 }

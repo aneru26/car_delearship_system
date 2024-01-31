@@ -15,26 +15,20 @@
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 </head>
-<body class="img js-fullheight" style="background-color: #000000;">
+<body class="img js-fullheight" >
 
-  <div id="particles-js"></div>
-  <section class="ftco-section">
+  
+  <section class="ftco-section js-fullheight">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6 text-center mb-5">
-            <!-- Replace the text with your logo image -->
-            <img src="{{ asset('frontend/images/car_dealership.png') }}" alt="Logo" class="logo-image" style=" width: 250px; 
-            height: auto;">
-        </div>
-    </div>
+  
     
-			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-4">
-					<div class="login-wrap p-0">
+			<div class="row justify-content-center ">
+				<div class="col-md-6 col-lg-4 border border-dark shadow-lg p-3 mb-5 bg-white rounded">
+					<div class="login-wrap p-0 ">
 
             <?php $session = true; ?>
 
-		      	<h3 class="mb-4 text-center" style="font-weight: bold">SIGN IN</h3>
+		      	<h3 class="mb-4 text-center sign-in-text text-dark" style="font-weight: bold">SIGN IN</h3>
 
             @if (!$session)
     <div class="alert alert-warning">
@@ -59,10 +53,10 @@
 		      	<form action="{{ url('login') }}" class="signin-form" method="post">
 					{{ csrf_field() }}
 		      		<div class="form-group">
-		      			<input type="email" class="form-control" name="email" placeholder="Email" required>
+		      			<input type="email" class="form-control bg-dark" name="email" placeholder="Email" required >
 		      		</div>
-	            <div class="form-group">
-	              <input id="password-field" type="password" class="form-control" name="password" placeholder="Password" required>
+	            <div class="form-group ">
+	              <input id="password-field" type="password" class="form-control bg-dark" name="password" placeholder="Password" required>
 	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 	            </div>
 	          
@@ -73,8 +67,8 @@
 									  <span class="checkmark"></span>
 									</label>
 								</div>
-								<div class="w-50 text-md-right">
-									<a href="{{ url('forgot-password')}}" style="color: #fff">Forgot Password?</a>
+								<div class="w-50 text-md-right ">
+									<a href="{{ url('forgot-password')}}" style="color: #000000">Forgot Password?</a>
 								</div>
                 
 	            </div>
@@ -89,7 +83,7 @@
             <div class="form-group d-md-flex">
              
               <div class="w-100 text-md-center">
-                <a href="{{ url('register')}}" style="display: inline-block; font-weight:bold; margin-top: 20px; padding: 10px 30px; background-color: rgb(255, 255, 255); color: #000000; border-radius: 20px; text-decoration: none;">Create Account</a>
+                <a href="{{ url('register')}}" style="display: inline-block; font-weight:bold; margin-top: 20px; padding: 10px 30px; background-color: rgb(0, 0, 0); color: #ffffff; border-radius: 20px; text-decoration: none;">Create Account</a>
             </div>
             
               

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-AzjwefkQcUqjMypi+3b7FwflIXISBxJl9sZlqoT9z1ugxE5CCdh+HHRcdZc3Gp3p" crossorigin="anonymous">
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700&display=fallback">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset ('plugins/fontawesome-free/css/all.min.css') }}">

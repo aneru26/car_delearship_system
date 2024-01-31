@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class Purchase extends Model
 {
@@ -22,18 +25,18 @@ class Purchase extends Model
 
     static public function getRecord()
     {
-       
-
+        
+    
         $return = Purchase::select('purchases.*','cars.vin','cars.brands','cars.models','cars.photo','users.name as name', 'users.last_name as last_name')
                 ->join('cars', 'cars.id', '=', 'purchases.car_id')
                 ->join('users', 'users.id', '=', 'purchases.customer_id')
                 ->where('purchases.is_delete','=', 0)
                 ->orderBy('purchases.id','desc')
                 ->paginate(10);
-
+    
         return $return;
     }
-
+    
     static public function getTotalPurchaseCar()
     {
        
@@ -48,35 +51,32 @@ class Purchase extends Model
         return $return;
     }
 
-    static public function getcustomerRecordAccepted()
+    static public function getcustomerRecordAccepted($userId)
     {
-
-
         $return = Purchase::select('purchases.*','cars.*','users.name as name', 'users.last_name as last_name')
                 ->join('cars', 'cars.id', '=', 'purchases.car_id')
                 ->join('users', 'users.id', '=', 'purchases.customer_id')
                 ->where('purchases.status','=', 'accepted')
                 ->where('purchases.is_delete','=', 0)
+                ->where('purchases.customer_id', '=', $userId) // Filter by authenticated user's ID
                 ->orderBy('purchases.id','desc')
                 ->paginate(10);
-
+    
         return $return;
     }
+    static public function getcustomerRecordDecline($userId)
+{
+    $return = Purchase::select('purchases.*','cars.*','users.name as name', 'users.last_name as last_name')
+            ->join('cars', 'cars.id', '=', 'purchases.car_id')
+            ->join('users', 'users.id', '=', 'purchases.customer_id')
+            ->where('purchases.status','=', 'declined')
+            ->where('purchases.is_delete','=', 0)
+            ->where('purchases.customer_id', '=', $userId) // Filter by authenticated user's ID
+            ->orderBy('purchases.id','desc')
+            ->paginate(10);
 
-    static public function getcustomerRecordDecline()
-    {
-
-
-        $return = Purchase::select('purchases.*','cars.*','users.name as name', 'users.last_name as last_name')
-                ->join('cars', 'cars.id', '=', 'purchases.car_id')
-                ->join('users', 'users.id', '=', 'purchases.customer_id')
-                ->where('purchases.status','=', 'declined')
-                ->where('purchases.is_delete','=', 0)
-                ->orderBy('purchases.id','desc')
-                ->paginate(10);
-
-        return $return;
-    }
+    return $return;
+}
 
     
     static public function getTotalPuchaseCustomer()
@@ -106,4 +106,22 @@ class Purchase extends Model
         }
     
     }
+    static public function getRecordsale()
+    {
+        // Base query
+    $return = Purchase::select(
+        'cars.brands as brands',
+        DB::raw('COUNT(purchases.id) as total_sales'), // Count of sales per brand
+        DB::raw('SUM(cars.price) as total_price') // Sum of price per brand
+    )
+    ->join('users', 'users.id', '=', 'purchases.customer_id')
+    ->join('cars', 'cars.id', '=', 'purchases.car_id')
+    ->where('purchases.is_delete', '=', 0)
+    ->where('purchases.status', '=', 'accepted')
+    ->groupBy('cars.brands') // Group by brand
+    ->paginate(10);
+
+    return $return;
+    }
+    
 }

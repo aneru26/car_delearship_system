@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Purchase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
@@ -43,20 +44,40 @@ class PurchaseController extends Controller
     }
 
 //customer
-    public function notpurchaselist()
-    {
-        $data['getRecord']= Purchase::getcustomerRecordDecline();
-        $data['header_title'] = "Cars";
-        return view('student.purchase.list', $data);
-    }
+public function notpurchaselist()
+{
+    $userId = Auth::id();
 
-    public function purchaselist()
-    {
-        $data['getRecord']= Purchase::getcustomerRecordAccepted();
-        $data['header_title'] = "Cars";
-        return view('student.purchase.list', $data);
-    }
+    $data['getRecord'] = Purchase::getcustomerRecordDecline($userId);
+    $data['header_title'] = "Cars";
 
+    return view('student.purchase.list', $data);
+}
+
+static public function getcustomerRecordDecline($userId)
+{
+    $return = Purchase::select('purchases.*','cars.*','users.name as name', 'users.last_name as last_name')
+            ->join('cars', 'cars.id', '=', 'purchases.car_id')
+            ->join('users', 'users.id', '=', 'purchases.customer_id')
+            ->where('purchases.status','=', 'declined')
+            ->where('purchases.is_delete','=', 0)
+            ->where('purchases.customer_id', '=', $userId) // Filter by authenticated user's ID
+            ->orderBy('purchases.id','desc')
+            ->paginate(10);
+
+    return $return;
+}
+
+
+public function purchaselist()
+{
+    $userId = Auth::id();
+
+    $data['getRecord'] = Purchase::getcustomerRecordAccepted($userId);
+    $data['header_title'] = "Cars";
+
+    return view('student.purchase.list', $data);
+}
 
     //admin
 
@@ -92,5 +113,13 @@ class PurchaseController extends Controller
         $data->save();
     
         return redirect()->back()->with('succes',"Purchase Successfully Decline");
+    }
+
+    public function saleslist(Request $request)
+    {
+    
+        $data['getRecord'] = Purchase::getRecordsale();
+        $data['header_title'] = "Inventory";
+        return view('admin.inventory.sales', $data);
     }
 }

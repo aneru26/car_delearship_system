@@ -24,7 +24,7 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <!-- ./col -->
-          <div class="col-lg-4 col-6">
+          <div class="col-lg-6 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
@@ -33,104 +33,63 @@
                 <p>Total Customer</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="fas fa-car"></i>
               </div>
               <a href="{{ url('admin/student/list')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
-          <div class="col-lg-4 col-6">
+          <div class="col-lg-6 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-gradient-danger">
               <div class="inner">
                 <h3>{{ $TotalDealer }}</h3>
 
                 <p>Total Dealer</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="fas fa-car"></i>
               </div>
               <a href="{{ url('admin/dealer/list')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>{{ $TotalSupplier }}</h3>
-
-                <p>Total Supplier</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="{{ url('admin/supplier/list')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
+          
 
           <div class="col-lg-6 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-gradient-warning">
               <div class="inner">
                 <h3>{{ $TotalCar }}</h3>
 
                 <p>Total Cars</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="fas fa-car"></i>
               </div>
               <a href="{{ url('admin/cars/list')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
           
-          <div class="col-lg-6 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>{{ $TotalParts }}</h3>
-
-                <p>Total Cars Parts</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="{{ url('admin/parts/list')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-
+     
              
           <div class="col-lg-6 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-primary">
               <div class="inner">
                 <h3>{{ $TotalPurchaseCar }}</h3>
 
                 <p>Total Purchase Car</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="fas fa-car"></i>
               </div>
               <a href="{{ url('admin/purchase/list')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
                  
-          <div class="col-lg-6 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>{{ $TotalPurchaseParts }}</h3>
-
-                <p>Total Purchase Parts</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="{{ url('dmin/purchase_parts/list')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
 
         </div>
         <!-- /.row -->

@@ -33,7 +33,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive" style="overflow:auto; " >
-                <table class="table table-bordered table-hover" id="myTable">
+                <table class="table table-head-fixed text-nowrap" id="myTable">
                   <thead>
                     <tr>
                      

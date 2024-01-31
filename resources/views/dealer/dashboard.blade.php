@@ -35,7 +35,8 @@
                 <p>Total Cars</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="fas fa-car"></i>
+
               </div>
               <a href="{{ url('admin/cars/list')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -45,14 +46,15 @@
           
           <div class="col-lg-6 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-primary">
               <div class="inner">
                 <h3>{{ $TotalPurchaseCar }}</h3>
 
                 <p>Total Purchase Car</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="fas fa-car"></i>
+
               </div>
               <a href="{{ url('admin/purchase/list')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
