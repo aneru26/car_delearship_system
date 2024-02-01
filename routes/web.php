@@ -37,7 +37,8 @@ use App\Http\Controllers\VerificationController;
 //    return view('welcome');
 //});
 
-Route::get('/', [AuthController::class,'login'] );
+Route::get('/', [AuthController::class,'landing'] );
+Route::get('loginpage', [AuthController::class,'login'] );
 Route::post('login', [AuthController::class,'Authlogin'] );
 Route::get('/login', [AuthController::class, 'AuthLogin'])->name('post.login');
 Route::get('logout', [AuthController::class,'logout'] );
